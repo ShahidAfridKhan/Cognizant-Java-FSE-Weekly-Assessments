@@ -1,15 +1,12 @@
 package com.cognizant.library;
 
-import java.util.*;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class BookService {
-    private List<Book> books = new ArrayList<>();
-
-    public BookService() {
-        books.add(new Book(1L, "Effective Java", "Joshua Bloch"));
-        books.add(new Book(2L, "Clean Code", "Robert C. Martin"));
+public class app{
+    public static void main(String[] args){
+        ApplicationContext c=new ClassPathXmlApplicationContext("applicationContext.xml");
+        bookservice b=c.getBean("bookService",bookservice.class);
+        b.printAllBooks();
     }
-
-    public List<Book> findAll() { return books; }
-    public void printAllBooks() { books.forEach(System.out::println); }
 }

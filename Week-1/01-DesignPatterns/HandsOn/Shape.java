@@ -1,63 +1,50 @@
 package com.cognizant.designpatterns;
 
-/**
- * Factory Pattern
- * Creates objects without specifying their exact classes
- * Decouples object creation from usage
- */
-public interface Shape {
+public interface shape{
     void draw();
 }
 
-class Circle implements Shape {
-    @Override
-    public void draw() {
-        System.out.println("Drawing Circle");
+class circle implements shape{
+    public void draw(){
+        System.out.println("drawing circle");
     }
 }
 
-class Rectangle implements Shape {
-    @Override
-    public void draw() {
-        System.out.println("Drawing Rectangle");
+class rect implements shape{
+    public void draw(){
+        System.out.println("drawing rectangle");
     }
 }
 
-class Triangle implements Shape {
-    @Override
-    public void draw() {
-        System.out.println("Drawing Triangle");
+class tri implements shape{
+    public void draw(){
+        System.out.println("drawing triangle");
     }
 }
 
-// Factory Class
-class ShapeFactory {
-    public static Shape createShape(String shapeType) {
-        if (shapeType == null) {
+class factory{
+    public static shape get(String s){
+        if(s==null)
             return null;
-        }
-        
-        if (shapeType.equalsIgnoreCase("CIRCLE")) {
-            return new Circle();
-        } else if (shapeType.equalsIgnoreCase("RECTANGLE")) {
-            return new Rectangle();
-        } else if (shapeType.equalsIgnoreCase("TRIANGLE")) {
-            return new Triangle();
-        }
+        if(s.equalsIgnoreCase("circle"))
+            return new circle();
+        if(s.equalsIgnoreCase("rectangle"))
+            return new rect();
+        if(s.equalsIgnoreCase("triangle"))
+            return new tri();
         return null;
     }
 }
 
-// Test
-class FactoryTest {
-    public static void main(String[] args) {
-        Shape circle = ShapeFactory.createShape("CIRCLE");
-        circle.draw();
-        
-        Shape rectangle = ShapeFactory.createShape("RECTANGLE");
-        rectangle.draw();
-        
-        Shape triangle = ShapeFactory.createShape("TRIANGLE");
-        triangle.draw();
+class test{
+    public static void main(String[] args){
+        shape s1=factory.get("circle");
+        s1.draw();
+
+        shape s2=factory.get("rectangle");
+        s2.draw();
+
+        shape s3=factory.get("triangle");
+        s3.draw();
     }
 }

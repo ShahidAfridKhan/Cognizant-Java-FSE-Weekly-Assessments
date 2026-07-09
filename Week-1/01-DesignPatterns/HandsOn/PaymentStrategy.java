@@ -1,85 +1,59 @@
 package com.cognizant.designpatterns;
 
-/**
- * Strategy Pattern
- * Encapsulates different algorithms in separate classes
- * Allows runtime selection of algorithm
- */
-public interface PaymentStrategy {
-    void pay(double amount);
+public interface pay{
+    void pay(double amt);
 }
-
-class CreditCardPayment implements PaymentStrategy {
-    private String cardNumber;
-    
-    public CreditCardPayment(String cardNumber) {
-        this.cardNumber = cardNumber;
+class card implements pay{
+    private String no;
+    public card(String no){
+        this.no=no;
     }
-    
-    @Override
-    public void pay(double amount) {
-        System.out.println("Paid " + amount + " using Credit Card: " + cardNumber);
+    public void pay(double amt){
+        System.out.println("paid "+amt+" using card: "+no);
     }
 }
-
-class PayPalPayment implements PaymentStrategy {
-    private String email;
-    
-    public PayPalPayment(String email) {
-        this.email = email;
+class paypal implements pay{
+    private String mail;
+    public paypal(String mail){
+        this.mail=mail;
     }
-    
-    @Override
-    public void pay(double amount) {
-        System.out.println("Paid " + amount + " using PayPal: " + email);
+    public void pay(double amt){
+        System.out.println("paid "+amt+" using paypal: "+mail);
     }
 }
-
-class BitcoinPayment implements PaymentStrategy {
-    private String walletAddress;
-    
-    public BitcoinPayment(String walletAddress) {
-        this.walletAddress = walletAddress;
+class bitcoin implements pay{
+    private String addr;
+    public bitcoin(String addr){
+        this.addr=addr;
     }
-    
-    @Override
-    public void pay(double amount) {
-        System.out.println("Paid " + amount + " using Bitcoin: " + walletAddress);
+    public void pay(double amt){
+        System.out.println("paid "+amt+" using bitcoin: "+addr);
     }
 }
-
-// Context
-class PaymentProcessor {
-    private PaymentStrategy strategy;
-    
-    public void setPaymentStrategy(PaymentStrategy strategy) {
-        this.strategy = strategy;
+class process{
+    private pay p;
+    public void set(pay p){
+        this.p=p;
     }
-    
-    public void processPayment(double amount) {
-        if (strategy == null) {
-            System.out.println("Payment strategy not set!");
+    public void run(double amt){
+        if(p==null){
+            System.out.println("payment not set");
             return;
         }
-        strategy.pay(amount);
+        p.pay(amt);
     }
 }
+class test{
+    public static void main(String[] args){
+        process p=new process();
 
-// Test
-class StrategyTest {
-    public static void main(String[] args) {
-        PaymentProcessor processor = new PaymentProcessor();
-        
-        // Pay with Credit Card
-        processor.setPaymentStrategy(new CreditCardPayment("1234-5678-9012-3456"));
-        processor.processPayment(100.0);
-        
-        // Pay with PayPal
-        processor.setPaymentStrategy(new PayPalPayment("user@paypal.com"));
-        processor.processPayment(50.0);
-        
-        // Pay with Bitcoin
-        processor.setPaymentStrategy(new BitcoinPayment("1A1z7agoat3WLa7R2Yhm2gro58Rk6Hs6gX"));
-        processor.processPayment(75.0);
+        p.set(new card("1234-5678-9012-3456"));
+        p.run(100);
+
+        p.set(new paypal("user@paypal.com"));
+        p.run(50);
+
+        p.set(new bitcoin("1A1z7agoat3WLa7R2Yhm2gro58Rk6Hs6gX"));
+        p.run(75);
     }
 }

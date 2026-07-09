@@ -2,89 +2,61 @@ package com.cognizant.testing;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.DisplayName;
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * JUnit 5 Test Examples
- * 
- * JUnit Basics:
- * - @Test: Marks a method as test
- * - @BeforeEach: Runs before each test
- * - @AfterEach: Runs after each test
- * - assertEquals: Assert two values are equal
- * - assertTrue/assertFalse: Assert boolean condition
- * - assertThrows: Assert exception is thrown
- * - assertNull/assertNotNull: Assert null/non-null
- */
-@DisplayName("Calculator Tests")
-class CalculatorTest {
-    
-    private Calculator calculator;
-    
+class calctest{
+
+    calc c;
+
     @BeforeEach
-    public void setUp() {
-        calculator = new Calculator();
+    void set(){
+        c=new calc();
     }
-    
+
     @Test
-    @DisplayName("Test Addition")
-    void testAdd() {
-        // Arrange
-        int a = 10, b = 20;
-        
-        // Act
-        int result = calculator.add(a, b);
-        
-        // Assert
-        assertEquals(30, result);
+    void add(){
+        assertEquals(30,c.add(10,20));
     }
-    
+
     @Test
-    @DisplayName("Test Subtraction")
-    void testSubtract() {
-        assertEquals(5, calculator.subtract(15, 10));
-        assertEquals(-5, calculator.subtract(10, 15));
-        assertEquals(0, calculator.subtract(10, 10));
+    void sub(){
+        assertEquals(5,c.sub(15,10));
+        assertEquals(-5,c.sub(10,15));
+        assertEquals(0,c.sub(10,10));
     }
-    
+
     @Test
-    @DisplayName("Test Multiplication")
-    void testMultiply() {
-        assertEquals(20, calculator.multiply(4, 5));
-        assertEquals(0, calculator.multiply(0, 5));
-        assertEquals(-20, calculator.multiply(-4, 5));
+    void mul(){
+        assertEquals(20,c.mul(4,5));
+        assertEquals(0,c.mul(0,5));
+        assertEquals(-20,c.mul(-4,5));
     }
-    
+
     @Test
-    @DisplayName("Test Division")
-    void testDivide() {
-        assertEquals(2.0, calculator.divide(10, 5));
-        assertEquals(0.5, calculator.divide(1, 2));
+    void div(){
+        assertEquals(2.0,c.div(10,5));
+        assertEquals(0.5,c.div(1,2));
     }
-    
+
     @Test
-    @DisplayName("Test Division by Zero")
-    void testDivideByZero() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            calculator.divide(10, 0);
+    void zero(){
+        assertThrows(IllegalArgumentException.class,()->{
+            c.div(10,0);
         });
     }
-    
+
     @Test
-    @DisplayName("Test Is Positive")
-    void testIsPositive() {
-        assertTrue(calculator.isPositive(5));
-        assertFalse(calculator.isPositive(-5));
-        assertFalse(calculator.isPositive(0));
+    void pos(){
+        assertTrue(c.pos(5));
+        assertFalse(c.pos(-5));
+        assertFalse(c.pos(0));
     }
-    
+
     @Test
-    @DisplayName("Test Is Even")
-    void testIsEven() {
-        assertTrue(calculator.isEven(4));
-        assertTrue(calculator.isEven(0));
-        assertFalse(calculator.isEven(3));
-        assertFalse(calculator.isEven(-3));
+    void even(){
+        assertTrue(c.even(4));
+        assertTrue(c.even(0));
+        assertFalse(c.even(3));
+        assertFalse(c.even(-3));
     }
 }

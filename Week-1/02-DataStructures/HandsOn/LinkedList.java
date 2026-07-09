@@ -1,146 +1,119 @@
 package com.cognizant.datastructures;
 
-/**
- * Singly Linked List Implementation
- * Time Complexity:
- * - Insert at beginning: O(1)
- * - Insert at end: O(n)
- * - Delete: O(n)
- * - Search: O(n)
- */
-public class LinkedList<T> {
-    
-    private Node<T> head;
-    private int size;
-    
-    private static class Node<T> {
+public class list<T>{
+
+    node<T> head;
+    int size;
+
+    static class node<T>{
         T data;
-        Node<T> next;
-        
-        Node(T data) {
-            this.data = data;
+        node<T> next;
+
+        node(T data){
+            this.data=data;
         }
     }
-    
-    public LinkedList() {
-        head = null;
-        size = 0;
-    }
-    
-    // Insert at beginning - O(1)
-    public void insertAtBeginning(T data) {
-        Node<T> newNode = new Node<>(data);
-        newNode.next = head;
-        head = newNode;
+
+    public void addFirst(T data){
+        node<T> n=new node<>(data);
+        n.next=head;
+        head=n;
         size++;
     }
-    
-    // Insert at end - O(n)
-    public void insertAtEnd(T data) {
-        Node<T> newNode = new Node<>(data);
-        if (head == null) {
-            head = newNode;
-        } else {
-            Node<T> current = head;
-            while (current.next != null) {
-                current = current.next;
+
+    public void addLast(T data){
+        node<T> n=new node<>(data);
+        if(head==null){
+            head=n;
+        }else{
+            node<T> t=head;
+            while(t.next!=null){
+                t=t.next;
             }
-            current.next = newNode;
+            t.next=n;
         }
         size++;
     }
-    
-    // Insert at position - O(n)
-    public void insertAtPosition(int position, T data) {
-        if (position < 0 || position > size) {
-            throw new IndexOutOfBoundsException("Invalid position");
-        }
-        
-        if (position == 0) {
-            insertAtBeginning(data);
+
+    public void add(int pos,T data){
+        if(pos<0||pos>size)
+            return;
+
+        if(pos==0){
+            addFirst(data);
             return;
         }
-        
-        Node<T> newNode = new Node<>(data);
-        Node<T> current = head;
-        for (int i = 0; i < position - 1; i++) {
-            current = current.next;
-        }
-        newNode.next = current.next;
-        current.next = newNode;
+
+        node<T> n=new node<>(data);
+        node<T> t=head;
+
+        for(int i=0;i<pos-1;i++)
+            t=t.next;
+
+        n.next=t.next;
+        t.next=n;
         size++;
     }
-    
-    // Delete at position - O(n)
-    public T deleteAtPosition(int position) {
-        if (position < 0 || position >= size) {
-            throw new IndexOutOfBoundsException("Invalid position");
+
+    public T delete(int pos){
+        if(pos<0||pos>=size)
+            return null;
+
+        T val;
+
+        if(pos==0){
+            val=head.data;
+            head=head.next;
+        }else{
+            node<T> t=head;
+            for(int i=0;i<pos-1;i++)
+                t=t.next;
+
+            val=t.next.data;
+            t.next=t.next.next;
         }
-        
-        T data;
-        if (position == 0) {
-            data = head.data;
-            head = head.next;
-        } else {
-            Node<T> current = head;
-            for (int i = 0; i < position - 1; i++) {
-                current = current.next;
-            }
-            data = current.next.data;
-            current.next = current.next.next;
-        }
+
         size--;
-        return data;
+        return val;
     }
-    
-    // Search - O(n)
-    public boolean contains(T data) {
-        Node<T> current = head;
-        while (current != null) {
-            if (current.data.equals(data)) {
+
+    public boolean find(T data){
+        node<T> t=head;
+        while(t!=null){
+            if(t.data.equals(data))
                 return true;
-            }
-            current = current.next;
+            t=t.next;
         }
         return false;
     }
-    
-    // Traverse
-    public void traverse() {
-        Node<T> current = head;
-        System.out.print("List: ");
-        while (current != null) {
-            System.out.print(current.data + " -> ");
-            current = current.next;
+
+    public void show(){
+        node<T> t=head;
+        while(t!=null){
+            System.out.print(t.data+" -> ");
+            t=t.next;
         }
         System.out.println("null");
     }
-    
-    public int getSize() {
-        return size;
-    }
-}
 
-// Test
-class LinkedListTest {
-    public static void main(String[] args) {
-        LinkedList<Integer> list = new LinkedList<>();
-        
-        list.insertAtEnd(10);
-        list.insertAtEnd(20);
-        list.insertAtEnd(30);
-        list.traverse();
-        
-        list.insertAtBeginning(5);
-        list.traverse();
-        
-        list.insertAtPosition(2, 15);
-        list.traverse();
-        
-        System.out.println("Contains 20? " + list.contains(20));
-        System.out.println("Contains 100? " + list.contains(100));
-        
-        list.deleteAtPosition(1);
-        list.traverse();
+    public static void main(String[] args){
+        list<Integer> l=new list<>();
+
+        l.addLast(10);
+        l.addLast(20);
+        l.addLast(30);
+        l.show();
+
+        l.addFirst(5);
+        l.show();
+
+        l.add(2,15);
+        l.show();
+
+        System.out.println(l.find(20));
+        System.out.println(l.find(100));
+
+        l.delete(1);
+        l.show();
     }
 }

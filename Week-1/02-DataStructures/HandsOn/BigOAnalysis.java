@@ -1,122 +1,78 @@
 package com.cognizant.datastructures;
 
-/**
- * Big O Complexity Analysis
- * Time Complexity: How execution time grows with input size
- * Space Complexity: How memory usage grows with input size
- */
-public class BigOAnalysis {
-    
-    /**
-     * O(1) - Constant Time
-     * No matter the input size, execution time is constant
-     */
-    public static int getFirstElement(int[] arr) {
-        return arr[0];  // Always 1 operation
+public class bigo{
+
+    public static int first(int[] a){
+        return a[0];
     }
-    
-    /**
-     * O(n) - Linear Time
-     * Execution time grows linearly with input size
-     */
-    public static int linearSearch(int[] arr, int target) {
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == target) {
+
+    public static int linear(int[] a,int t){
+        for(int i=0;i<a.length;i++){
+            if(a[i]==t)
                 return i;
-            }
         }
         return -1;
     }
-    
-    /**
-     * O(n^2) - Quadratic Time
-     * Nested loops - often in sorting algorithms
-     */
-    public static void bubbleSort(int[] arr) {
-        int n = arr.length;
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n - i - 1; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    int temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
+
+    public static void bubble(int[] a){
+        for(int i=0;i<a.length;i++){
+            for(int j=0;j<a.length-i-1;j++){
+                if(a[j]>a[j+1]){
+                    int temp=a[j];
+                    a[j]=a[j+1];
+                    a[j+1]=temp;
                 }
             }
         }
     }
-    
-    /**
-     * O(log n) - Logarithmic Time
-     * Binary search - problem size halves in each iteration
-     */
-    public static int binarySearch(int[] arr, int target) {
-        int left = 0, right = arr.length - 1;
-        while (left <= right) {
-            int mid = left + (right - left) / 2;
-            if (arr[mid] == target) {
-                return mid;
-            } else if (arr[mid] < target) {
-                left = mid + 1;
-            } else {
-                right = mid - 1;
-            }
+
+    public static int binary(int[] a,int t){
+        int l=0,r=a.length-1;
+        while(l<=r){
+            int m=(l+r)/2;
+            if(a[m]==t)
+                return m;
+            if(a[m]<t)
+                l=m+1;
+            else
+                r=m-1;
         }
         return -1;
     }
-    
-    /**
-     * O(n log n) - Efficient sorting
-     * Merge sort, Quick sort
-     */
-    public static void mergeSort(int[] arr) {
-        if (arr.length < 2) return;
-        
-        int mid = arr.length / 2;
-        int[] left = new int[mid];
-        int[] right = new int[arr.length - mid];
-        
-        System.arraycopy(arr, 0, left, 0, mid);
-        System.arraycopy(arr, mid, right, 0, arr.length - mid);
-        
-        mergeSort(left);
-        mergeSort(right);
-        merge(arr, left, right);
+
+    public static void mergeSort(int[] a){
+        if(a.length<2)
+            return;
+
+        int m=a.length/2;
+        int[] l=new int[m];
+        int[] r=new int[a.length-m];
+
+        System.arraycopy(a,0,l,0,m);
+        System.arraycopy(a,m,r,0,a.length-m);
+
+        mergeSort(l);
+        mergeSort(r);
+        merge(a,l,r);
     }
-    
-    private static void merge(int[] arr, int[] left, int[] right) {
-        int i = 0, j = 0, k = 0;
-        while (i < left.length && j < right.length) {
-            if (left[i] <= right[j]) {
-                arr[k++] = left[i++];
-            } else {
-                arr[k++] = right[j++];
-            }
+
+    public static void merge(int[] a,int[] l,int[] r){
+        int i=0,j=0,k=0;
+        while(i<l.length&&j<r.length){
+            if(l[i]<=r[j])
+                a[k++]=l[i++];
+            else
+                a[k++]=r[j++];
         }
-        while (i < left.length) {
-            arr[k++] = left[i++];
-        }
-        while (j < right.length) {
-            arr[k++] = right[j++];
-        }
+        while(i<l.length)
+            a[k++]=l[i++];
+        while(j<r.length)
+            a[k++]=r[j++];
     }
-    
-    /**
-     * O(2^n) - Exponential Time
-     * Very inefficient - avoid if possible
-     * Example: Recursive Fibonacci without memoization
-     */
-    public static int fibonacci(int n) {
-        if (n <= 1) return n;
-        return fibonacci(n - 1) + fibonacci(n - 2);
+
+    public static int fib(int n){
+        if(n<=1)
+            return n;
+        return fib(n-1)+fib(n-2);
     }
 }
-
-// Summary Table:
-// O(1)     - Constant - Array access
-// O(log n) - Logarithmic - Binary Search
-// O(n)     - Linear - Linear Search
-// O(n log n) - Linearithmic - Merge Sort, Quick Sort
-// O(n^2)   - Quadratic - Bubble Sort, Selection Sort
-// O(n^3)   - Cubic - Matrix multiplication
-// O(2^n)   - Exponential - Recursive problems
-// O(n!)    - Factorial - Permutations
