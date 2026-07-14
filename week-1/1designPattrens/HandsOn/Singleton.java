@@ -1,27 +1,31 @@
 package com.cognizant.designpatterns;
 
-public class single{
-    private static single obj=new single();
+class single {
 
-    private single(){
+    private static single s = new single();
+
+    private single() {
         System.out.println("object created");
     }
 
-    public static single get(){
-        return obj;
+    public static single get() {
+        return s;
     }
 
-    public void log(String msg){
-        System.out.println(msg);
+    public void log(String m) {
+        System.out.println(m);
     }
 }
 
-class test{
-    public static void main(String[] args){
-        single s1=single.get();
-        single s2=single.get();
+class test {
 
-        s1.log("hello");
-        System.out.println(s1==s2);
+    public static void main(String[] args) {
+
+        single a = single.get();
+        single b = single.get();
+
+        a.log("hello");
+
+        System.out.println(a == b);
     }
 }

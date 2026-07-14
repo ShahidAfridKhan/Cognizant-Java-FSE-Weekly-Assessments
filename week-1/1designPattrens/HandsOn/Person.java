@@ -1,60 +1,68 @@
 package com.cognizant.designpatterns;
 
-public class person{
-    private String fn,ln,email,phone,addr;
-    private int age;
+class person {
 
-    private person(build b){
-        fn=b.fn;
-        ln=b.ln;
-        age=b.age;
-        email=b.email;
-        phone=b.phone;
-        addr=b.addr;
+    private String fn, ln, em, ph, ad;
+    private int ag;
+
+    private person(build b) {
+        fn = b.fn;
+        ln = b.ln;
+        ag = b.ag;
+        em = b.em;
+        ph = b.ph;
+        ad = b.ad;
     }
 
-    public String toString(){
-        return "person{fn='"+fn+"', ln='"+ln+"', age="+age+", email='"+email+"', phone='"+phone+"', addr='"+addr+"'}";
+    public String toString() {
+        return "name: " + fn + " " + ln +
+                ", age: " + ag +
+                ", email: " + em +
+                ", phone: " + ph +
+                ", address: " + ad;
     }
 
-    static class build{
-        private String fn,ln,email,phone,addr;
-        private int age;
+    static class build {
 
-        public build(String fn,String ln){
-            this.fn=fn;
-            this.ln=ln;
+        private String fn, ln, em, ph, ad;
+        private int ag;
+
+        public build(String fn, String ln) {
+            this.fn = fn;
+            this.ln = ln;
         }
 
-        public build age(int age){
-            this.age=age;
+        public build age(int ag) {
+            this.ag = ag;
             return this;
         }
 
-        public build email(String email){
-            this.email=email;
+        public build email(String em) {
+            this.em = em;
             return this;
         }
 
-        public build phone(String phone){
-            this.phone=phone;
+        public build phone(String ph) {
+            this.ph = ph;
             return this;
         }
 
-        public build addr(String addr){
-            this.addr=addr;
+        public build addr(String ad) {
+            this.ad = ad;
             return this;
         }
 
-        public person get(){
+        public person get() {
             return new person(this);
         }
     }
 }
 
-class test{
-    public static void main(String[] args){
-        person p=new person.build("john","doe")
+class test {
+
+    public static void main(String[] args) {
+
+        person p = new person.build("john", "doe")
                 .age(30)
                 .email("john@example.com")
                 .phone("123-456-7890")

@@ -1,50 +1,58 @@
 package com.cognizant.designpatterns;
 
-public interface shape{
+interface shape {
     void draw();
 }
 
-class circle implements shape{
-    public void draw(){
+class circle implements shape {
+    public void draw() {
         System.out.println("drawing circle");
     }
 }
 
-class rect implements shape{
-    public void draw(){
+class rect implements shape {
+    public void draw() {
         System.out.println("drawing rectangle");
     }
 }
 
-class tri implements shape{
-    public void draw(){
+class tri implements shape {
+    public void draw() {
         System.out.println("drawing triangle");
     }
 }
 
-class factory{
-    public static shape get(String s){
-        if(s==null)
+class factory {
+
+    public static shape get(String s) {
+
+        if (s == null)
             return null;
-        if(s.equalsIgnoreCase("circle"))
+
+        if (s.equalsIgnoreCase("circle"))
             return new circle();
-        if(s.equalsIgnoreCase("rectangle"))
+
+        if (s.equalsIgnoreCase("rectangle"))
             return new rect();
-        if(s.equalsIgnoreCase("triangle"))
+
+        if (s.equalsIgnoreCase("triangle"))
             return new tri();
+
         return null;
     }
 }
 
-class test{
-    public static void main(String[] args){
-        shape s1=factory.get("circle");
-        s1.draw();
+class test {
 
-        shape s2=factory.get("rectangle");
-        s2.draw();
+    public static void main(String[] args) {
 
-        shape s3=factory.get("triangle");
-        s3.draw();
+        shape a = factory.get("circle");
+        a.draw();
+
+        shape b = factory.get("rectangle");
+        b.draw();
+
+        shape c = factory.get("triangle");
+        c.draw();
     }
 }

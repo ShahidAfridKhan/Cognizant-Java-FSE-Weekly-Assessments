@@ -1,59 +1,78 @@
 package com.cognizant.designpatterns;
 
-public interface pay{
-    void pay(double amt);
+interface pay {
+    void pay(double a);
 }
-class card implements pay{
+
+class card implements pay {
     private String no;
-    public card(String no){
-        this.no=no;
+
+    public card(String no) {
+        this.no = no;
     }
-    public void pay(double amt){
-        System.out.println("paid "+amt+" using card: "+no);
-    }
-}
-class paypal implements pay{
-    private String mail;
-    public paypal(String mail){
-        this.mail=mail;
-    }
-    public void pay(double amt){
-        System.out.println("paid "+amt+" using paypal: "+mail);
+
+    public void pay(double a) {
+        System.out.println("paid " + a + " using card: " + no);
     }
 }
-class bitcoin implements pay{
-    private String addr;
-    public bitcoin(String addr){
-        this.addr=addr;
+
+class paypal implements pay {
+    private String id;
+
+    public paypal(String id) {
+        this.id = id;
     }
-    public void pay(double amt){
-        System.out.println("paid "+amt+" using bitcoin: "+addr);
+
+    public void pay(double a) {
+        System.out.println("paid " + a + " using paypal: " + id);
     }
 }
-class process{
+
+class bitcoin implements pay {
+    private String ad;
+
+    public bitcoin(String ad) {
+        this.ad = ad;
+    }
+
+    public void pay(double a) {
+        System.out.println("paid " + a + " using bitcoin: " + ad);
+    }
+}
+
+class process {
     private pay p;
-    public void set(pay p){
-        this.p=p;
+
+    public void set(pay p) {
+        this.p = p;
     }
-    public void run(double amt){
-        if(p==null){
+
+    public void run(double a) {
+        if (p == null) {
             System.out.println("payment not set");
             return;
         }
-        p.pay(amt);
+
+        p.pay(a);
     }
 }
-class test{
-    public static void main(String[] args){
-        process p=new process();
 
-        p.set(new card("1234-5678-9012-3456"));
+class test {
+    public static void main(String[] args) {
+
+        process p = new process();
+
+        card c = new card("1234-5678-9012-3456");
+        paypal pp = new paypal("user@paypal.com");
+        bitcoin b = new bitcoin("1a1z7agoat3wla7r2yhm2gro58rk6hs6gx");
+
+        p.set(c);
         p.run(100);
 
-        p.set(new paypal("user@paypal.com"));
+        p.set(pp);
         p.run(50);
 
-        p.set(new bitcoin("1A1z7agoat3WLa7R2Yhm2gro58Rk6Hs6gX"));
+        p.set(b);
         p.run(75);
     }
 }

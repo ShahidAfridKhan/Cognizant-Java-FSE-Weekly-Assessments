@@ -3,44 +3,56 @@ package com.cognizant.designpatterns;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface obs{
+interface Obs {
     void update(String msg);
 }
-class email implements obs{
-    public void update(String msg){
-        System.out.println("email: "+msg);
+
+class Email implements Obs {
+    public void update(String msg) {
+        System.out.println("Email: " + msg);
     }
 }
-class sms implements obs{
-    public void update(String msg){
-        System.out.println("sms: "+msg);
+
+class Sms implements Obs {
+    public void update(String msg) {
+        System.out.println("SMS: " + msg);
     }
 }
-class push implements obs{
-    public void update(String msg){
-        System.out.println("push: "+msg);
+
+class Push implements Obs {
+    public void update(String msg) {
+        System.out.println("Push: " + msg);
     }
 }
-class notify{
-    private List<obs> list=new ArrayList<>();
-    public void add(obs o){
-        list.add(o);
+
+class Notify {
+    List<Obs> ls = new ArrayList<>();
+
+    void add(Obs o) {
+        ls.add(o);
     }
-    public void remove(obs o){
-        list.remove(o);
+
+    void remove(Obs o) {
+        ls.remove(o);
     }
-    public void send(String msg){
-        for(obs o:list){
+
+    void send(String msg) {
+        for (Obs o : ls) {
             o.update(msg);
         }
     }
 }
-class test{
-    public static void main(String[] args){
-        notify n=new notify();
-        n.add(new email());
-        n.add(new sms());
-        n.add(new push());
-        n.send("new order received!");
+
+public class Test {
+    public static void main(String[] args) {
+
+        Notify n = new Notify();
+        Email e = new Email();
+        Sms s = new Sms();
+        Push p = new Push();
+        n.add(e);
+        n.add(s);
+        n.add(p);
+        n.send("New order received!");
     }
 }
