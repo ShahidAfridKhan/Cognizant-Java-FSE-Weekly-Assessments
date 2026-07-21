@@ -1,0 +1,85 @@
+// LoanApplication.java
+
+package com.cognizant.loan;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class LoanApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(LoanApplication.class, args);
+    }
+
+}// Loan.java
+
+ package com.cognizant.loan;
+
+ public class Loan {
+
+     private String number;
+     private String type;
+     private double amount;
+     private int months;
+
+     public Loan() {
+     }
+
+     public Loan(String number, String type, double amount, int months) {
+         this.number = number;
+         this.type = type;
+         this.amount = amount;
+         this.months = months;
+     }
+
+     public String getNumber() {
+         return number;
+     }
+
+     public void setNumber(String number) {
+         this.number = number;
+     }
+
+     public String getType() {
+         return type;
+     }
+
+     public void setType(String type) {
+         this.type = type;
+     }
+
+     public double getAmount() {
+         return amount;
+     }
+
+     public void setAmount(double amount) {
+         this.amount = amount;
+     }
+
+     public int getMonths() {
+         return months;
+     }
+
+     public void setMonths(int months) {
+         this.months = months;
+     }
+
+ }// LoanController.java
+
+  package com.cognizant.loan;
+
+  import org.springframework.web.bind.annotation.*;
+
+  @RestController
+  @RequestMapping("/loans")
+  public class LoanController {
+
+      @GetMapping("/{number}")
+      public Loan getLoan(@PathVariable String number) {
+
+          return new Loan(number, "Home Loan", 750000, 120);
+
+      }
+
+  }
