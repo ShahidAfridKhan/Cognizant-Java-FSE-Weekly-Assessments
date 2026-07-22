@@ -1,0 +1,351 @@
+# Cognizant Prompt Engineering - Complete Prompts
+
+==================================================
+1. What is Prompt Engineering?
+==================================================
+
+A prompt is a simple instruction or question given to an AI model to get a specific response.
+
+Examples:
+
+Translation
+Translate English to German:
+That is good.
+
+Grammar (CoLA)
+CoLA sentence:
+The course is jumping well.
+
+Semantic Similarity (STS-B)
+STS-B
+Sentence 1:
+The rhino grazed on the grass.
+
+Sentence 2:
+A rhino is grazing in a field.
+
+Summarization
+Summarize:
+State authorities dispatched emergency crews Tuesday to survey the damage after an onslaught of severe weather in Mississippi...
+
+==================================================
+2. Five Principles of Prompt Engineering
+==================================================
+
+Role (Who am I?)
+Example:
+You are a final-year university student.
+
+Instruction (What do I want?)
+Example:
+Provide five strategies.
+
+Context (Why do I want it?)
+Example:
+This is for my university ESG project.
+
+Data (What do I already know?)
+Example:
+Use ideas inspired by 3M Window Films.
+
+Output Format (How do I want the answer?)
+Example:
+Provide bullet points with citations.
+
+==================================================
+3. Example Without Prompt Engineering
+==================================================
+
+Provide me 3 ways to improve planet-friendly practices in my university using solar.
+
+==================================================
+4. Example With Prompt Engineering
+==================================================
+
+Assume you are a final-year university student taking multiple Environment, Social and Governance (ESG) modules.
+
+Provide five practical and cost-effective solar energy strategies that will help the university reduce its carbon footprint and achieve net-zero emissions by 2030.
+
+Take inspiration from 3M Window Films.
+
+Provide the answer as bullet points.
+
+Include implementation steps and citations.
+
+==================================================
+5. Hands-On Practice
+==================================================
+
+Scenario 1 - Travel Blog
+
+For a travel blog, write a blog post about the top five must-visit places in Japan.
+
+The post should be engaging and informative.
+
+Include:
+- Brief description of each place
+- Why it is worth visiting
+
+--------------------------------------------------
+
+Scenario 2 - Customer Service Email
+
+Respond to a customer complaint.
+
+Write a customer service email addressing the customer's concerns and offering a suitable solution.
+
+The email should be empathetic and helpful.
+
+Include:
+- Subject
+- Greeting
+- Body
+- Closing
+
+--------------------------------------------------
+
+Scenario 3 - Company Invitation Email
+
+Write an invitation email to colleagues for a company event.
+
+Provide event details and encourage attendance.
+
+The email should be friendly and informative.
+
+Include:
+- Subject
+- Greeting
+- Body
+- Closing
+
+--------------------------------------------------
+
+Scenario 4 - Request a Quote
+
+Write a professional email to a vendor requesting a quotation for office supplies.
+
+Include:
+- List of required items
+- Quantity of each item
+
+The email should be polite and professional.
+
+Include:
+- Subject
+- Greeting
+- Body
+- Closing
+
+==================================================
+6. Prompt Engineering Techniques
+==================================================
+
+Zero-Shot Prompting
+
+Write a follow-up email to a client after a meeting.
+
+--------------------------------------------------
+
+One-Shot Prompting
+
+Write a follow-up email to a client after a meeting.
+
+Example:
+
+Dear [Client Name],
+
+Thank you for meeting with me today.
+
+I appreciate the opportunity to discuss our project.
+
+Please let me know if you have any further questions.
+
+Best regards,
+[Your Name]
+
+--------------------------------------------------
+
+Few-Shot (Multi-Shot) Prompting
+
+Write a follow-up email to a client after a meeting.
+
+Example 1
+
+Dear [Client Name],
+
+Thank you for meeting with me today.
+
+I appreciate the opportunity to discuss our project.
+
+Please let me know if you have any further questions.
+
+Best regards,
+[Your Name]
+
+Example 2
+
+Hi [Client Name],
+
+It was great meeting with you today.
+
+I look forward to working together on this project.
+
+If you have any questions, feel free to reach out.
+
+Best,
+[Your Name]
+
+--------------------------------------------------
+
+Role Prompting
+
+Act as a sales representative.
+
+Write a follow-up email to a client after a meeting.
+
+--------------------------------------------------
+
+Tabular Format Prompting
+
+Summarize the key points from the meeting.
+
+Create a table with columns:
+- Topic
+- Discussion
+- Action Items
+
+--------------------------------------------------
+
+Ask Before Answering
+
+Before writing the follow-up email, ask me for any specific details you need about the meeting.
+
+--------------------------------------------------
+
+Fill in the Blank Prompting
+
+Dear __________,
+
+Thank you for meeting with me today.
+
+I appreciate the opportunity to discuss __________.
+
+Please let me know if you have any further questions.
+
+Best regards,
+
+____________
+
+--------------------------------------------------
+
+Perspective Prompting
+
+Write a follow-up email after a meeting from the perspective of a project manager.
+
+--------------------------------------------------
+
+Chain of Thought Prompting
+
+First, thank the client for the meeting.
+
+Then summarize the key discussion points.
+
+Finally, offer additional assistance and provide your contact information.
+
+==================================================
+7. Hands-On Match the Prompt
+==================================================
+
+Scenario 1 - Dialogue Generation
+
+Generate an engaging dialogue between a detective and a suspect.
+
+The conversation should be suspenseful and reveal clues gradually.
+
+OR
+
+Generate a dialogue between an alien and a human meeting for the first time.
+
+The dialogue should be creative and humorous.
+
+--------------------------------------------------
+
+Scenario 2 - Image Captioning
+
+Generate a creative caption for an image.
+
+Include:
+- Colors
+- Emotions
+- Background
+- Context
+
+Make the caption descriptive and engaging.
+
+--------------------------------------------------
+
+Scenario 3 - Sentiment Transformation
+
+Original Sentence:
+The weather is pleasant today.
+
+Positive Prompt:
+Rewrite the sentence with a more positive sentiment.
+
+Negative Prompt:
+Rewrite the sentence with a negative sentiment.
+
+Humorous Prompt:
+Rewrite the sentence with a humorous sentiment.
+
+==================================================
+8. Quick Revision Prompts
+==================================================
+
+Role Prompting
+Act as a teacher and explain recursion to a beginner.
+
+Zero-Shot
+Summarize this article.
+
+One-Shot
+Summarize this article.
+
+Example:
+Article: AI is transforming education.
+Summary: AI is improving personalized learning.
+
+Few-Shot
+Example 1
+Sentence: I love coding.
+Sentiment: Positive
+
+Example 2
+Sentence: I hate traffic.
+Sentiment: Negative
+
+Sentence:
+Today is amazing.
+
+Sentiment:
+
+Perspective Prompting
+Explain climate change from the perspective of a scientist.
+
+Ask Before Answering
+Before giving travel recommendations, ask me about my budget and preferred destination.
+
+Tabular Prompting
+Compare Java, Python, and C++ in a table with columns:
+- Feature
+- Java
+- Python
+- C++
+
+Fill in the Blank
+Dear ________,
+
+Thank you for ________.
+
+Regards,
+________
